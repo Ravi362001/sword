@@ -1,0 +1,246 @@
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Press Start 2P', cursive;
+      background-color: blue;
+    }
+    #displayText
+    {
+      animation: flicker 1.5s infinite alternate;
+      color: #fff;
+    }
+    @keyframes flicker {
+    
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+  
+        text-shadow:
+        0 0 4px #fff,
+        0 0 11px #fff,
+        0 0 19px #fff,
+        0 0 40px #0fa,
+        0 0 80px #0fa,
+        0 0 90px #0fa,
+        0 0 100px #0fa,
+        0 0 150px #0fa;
+    
+    }
+    
+    20%, 24%, 55% {        
+        text-shadow: none;
+    }    
+  }
+  
+  </style>
+  <!-- <script>
+    let mySound = new Audio('./audio/intro.mp3');
+     mySound.play()
+  </script> -->
+</head>
+<body>
+  <div id="hide" style="position: relative;
+  left:500px;
+  top: 150px;
+  display: inline-block;
+  border: 10px inset;
+  padding: 20px;
+  border-color: red;
+">
+    <h1 style="color:brown;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;">sword fighting</h1>
+    <h3 style="color:goldenrod">player one controls:</h3>
+    <p style="color:white">press w (for jump) <br>
+       press d (for run forword) <br>
+       press a (for run backword) <br>
+       press spacebar (for attack) <br>
+    </p>
+    <h3 style="color:goldenrod">player two controls:</h3>
+    <p style="color: white;">press up key (for jump) <br>
+       press forword key (for run forword) <br>
+       press backword key (for run backword) <br>
+       press downword key (for attack) <br>
+    </p>
+      <a id='time'href="#" onclick="myFunction()" style="background-color: red;
+      border: inset;
+      color:black;
+      text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #0fa,
+      0 0 82px #0fa,
+      0 0 92px #0fa,
+      0 0 102px #0fa,
+      0 0 151px #0fa;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      position: absolute;
+      left:200px ;
+      border-radius: 20px;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    ">Start Game</a>
+  </div>
+  <div style="position: absolute;
+  left: 250px;">
+  <!-- red container div -->
+  <div style="position: relative; display: inline-block; ">
+    <!-- smaller red container div -->
+    <div id="red"
+      style="
+        position: absolute;
+        display: none;
+        width: 100%;
+        align-items: center;
+        padding: 20px;
+      "
+    >
+      <!-- player health -->
+      <div
+        style="
+          position: relative;
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+          border-top: 4px solid white;
+          border-left: 4px solid white;
+          border-bottom: 4px solid white;
+        "
+      >
+        <div style="background-color: red; height: 30px; width: 100%"></div>
+        <div
+          id="playerHealth"
+          style="
+            position: absolute;
+            background: #818cf8;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+          "
+        ></div>
+      </div>
+
+      <!-- timer -->
+      <div 
+        id="timer"
+        style="
+          background-color: black;
+          width: 100px;
+          height: 50px;
+          flex-shrink: 0;
+          display: none;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          border: 4px solid white;
+        "
+      >
+        10
+      </div>
+      <!-- enemy health -->
+      <div
+        style="
+          position: relative;
+          width: 100%;
+          border-top: 4px solid white;
+          border-bottom: 4px solid white;
+          border-right: 4px solid white;
+        "
+      >
+        <div style="background-color: red; height: 30px"></div>
+        <div
+          id="enemyHealth"
+          style="
+            position: absolute;
+            background: #818cf8;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+          "
+        ></div>
+      </div>
+      <div></div>
+    </div>
+    <div
+      id="displayText"
+      style="
+        position: absolute;
+        border: 10px;
+        display: inline;
+        background-image:url('./img/win_game.gif') ;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: none;
+      "
+    >
+      Tie
+    </div>
+    <canvas id="show" style="display: none;"></canvas>
+    <a id='restart'href="#" onclick="window.location.reload()" style="background-color: #4CAF50;
+      border: inset;
+      color:black;
+      text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #0fa,
+      0 0 82px #0fa,
+      0 0 92px #0fa,
+      0 0 102px #0fa,
+      0 0 151px #0fa;
+      padding: 15px 32px;
+      text-align: center;
+      position: absolute;
+      left:350px ;
+      text-decoration: none;
+      display: none;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    ">ReStart Game</a>
+  </div>
+  </div>
+  </div>
+  <script>
+    function myFunction() {
+      document.getElementById("hide").style.display = "none";
+      document.getElementById("show").style.display = "flex";
+      document.getElementById("timer").style.display = "flex";
+      document.getElementById("red").style.display = "flex";
+      document.getElementById("restart").style.display = "inline-block";
+    }
+    </script>
+    
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
+    integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script src="js/utils.js"></script>
+  <script src="js/classes.js"></script>
+  <script src="index.js"></script>
+</body>
